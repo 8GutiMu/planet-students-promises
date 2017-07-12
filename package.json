@@ -1,0 +1,23 @@
+{
+  "name": "planet-students-promises",
+  "version": "1.0.0",
+  "description": "json, promises",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/8GutiMu/planet-students-promises.git"
+  },
+  "author": "GutiMu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/8GutiMu/planet-students-promises/issues"
+  },
+  "homepage": "https://github.com/8GutiMu/planet-students-promises#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  },
+  "devDependencies": {}
+}
