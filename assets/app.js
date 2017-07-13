@@ -16,29 +16,6 @@ var getJSON = function (url) {
     })
 }
 
-
-var plantilla = '<div class="row">' +
-    '<div class="col s12 m6">' +
-    '<div class="card blue-grey darken-1">' +
-    ' <div class="card-content white-text">' +
-    ' <img src="https://dummyimage.com/200x100/fff/000" alt="">' +
-    '<span class="card-title">__planeta__</span>' +
-    ' <p>__especificaciones__</p>' +
-    '</div>' +
-    '</div>' +
-    '</div>' +
-    '</div>';
-
-function mostrarTarjeta(nombre) {
-    
-    var nuevaPlantilla="";
-    nuevaPlantilla += plantilla.replace("__planeta__", nombre.pl_name);
-    
-    
-    var container = document.getElementById("container");
-    console.log(nuevaPlantilla,container)
-    container.innerHTML(nuevaPlantilla);
-}
 /*
  * Obtener el Json es nuestra primera opción
  * Para obtener la ruta la debemos dar de alta en express (express.static)
@@ -46,24 +23,86 @@ function mostrarTarjeta(nombre) {
 getJSON("data/earth-like-results.json")
     .then(function (mensaje) {
         var results = mensaje.results;
+    console.log(results)
         return results;
     })
     .then(function (resultados) {
         resultados.forEach(function (resultado) {
             getJSON(resultado)
-                .then(function(resultado){
-                console.log(resultado)
-                mostrarTarjeta(resultado)
-            })
+                .then(function (resultado) {
+                    console.log(resultado)
+                    renderTarjeta(resultado)
+                })
         })
     })
 
-function perrito(item){
-        var container = document.getElementById("container");
+//var renderPlaneta = function (item) {
+//    var container = document.getElementById("container");
+//    var div = document.createElement("div")
+//    div.innerText = item.pl_name;
+//    container.appendChild(div);
+//}
 
-    var div = document.createElement("div")
-    div.innerText = item.dec
-    container.appendChild(div);
+
+var renderTarjeta = function (item) {
+    var row = crearUnElemento("div", {
+        className: "row ",
+        innerText: "",
+        src: ""
+    })
+    var col = crearUnElemento("div", {
+        className: "col s12 m6",
+        innerText: "",
+        src: ""
+    })
+    var card = crearUnElemento("div", {
+        className: "card blue-grey darken-1",
+        innerText:"",
+        src: ""
+    })
+    var cardContent = crearUnElemento("div", {
+        className: "card-content white-text",
+        innerText: "",
+        src: ""
+    })
+    var img = crearUnElemento("img", {
+        className: "",
+        innerText: "",
+        src: "https://dummyimage.com/200x100/fff/000"
+    })
+    var titulo = crearUnElemento("span", {
+        className: "card-title",
+        innerText: item.pl_name,
+        src: ""
+    })
+    var especificaciones = crearUnElemento("p", {
+        className: "",
+        innerText: "Densidad:" + item.pl_dens +" Telescopio:"+ item.pl_telescope,
+        src: ""
+    })
+    
+    var container = document.getElementById("container");
+    container.className = "container center-align";
+    
+    container.append(row)
+    row.appendChild(col)
+    col.appendChild(card)
+    card.appendChild(cardContent)
+    cardContent.appendChild(img)
+    cardContent.appendChild(titulo)
+    cardContent.appendChild(especificaciones)
+    
+    
+    
+    
 }
 
 
+var crearUnElemento = function (elementoACrear, propiedades) {
+    var elemento = document.createElement(elementoACrear);
+    elemento.className = propiedades.className;
+    elemento.innerText = propiedades.innerText;
+    elemento.src = propiedades.src;
+
+    return elemento;
+}
