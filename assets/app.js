@@ -2,6 +2,7 @@
  * Pedimos un json por medio de una promesa, siempre se pone
  * return new Promise
  */
+
 var getJSON = function (url) {
     return new Promise(function (resolve, reject) {
         var ajax = new XMLHttpRequest();
@@ -20,6 +21,8 @@ var getJSON = function (url) {
  * Obtener el Json es nuestra primera opción
  * Para obtener la ruta la debemos dar de alta en express (express.static)
  */
+
+
 getJSON("data/earth-like-results.json")
     .then(function (mensaje) {
         var results = mensaje.results;
@@ -39,12 +42,12 @@ getJSON("data/earth-like-results.json")
 
 var renderTarjeta = function (item) {
     var row = crearUnElemento("div", {
-        className: "row ",
+        className: "row center ",
         innerText: "",
         src: ""
     })
     var col = crearUnElemento("div", {
-        className: "col s12 m9",
+        className: "col s12 m12",
         innerText: "",
         src: ""
     })
@@ -75,7 +78,6 @@ var renderTarjeta = function (item) {
     })
     
     var container = document.getElementById("container");
-    container.className = "container center-align";
     
     container.append(row)
     row.appendChild(col)
