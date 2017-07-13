@@ -36,13 +36,6 @@ getJSON("data/earth-like-results.json")
         })
     })
 
-//var renderPlaneta = function (item) {
-//    var container = document.getElementById("container");
-//    var div = document.createElement("div")
-//    div.innerText = item.pl_name;
-//    container.appendChild(div);
-//}
-
 
 var renderTarjeta = function (item) {
     var row = crearUnElemento("div", {
@@ -51,7 +44,7 @@ var renderTarjeta = function (item) {
         src: ""
     })
     var col = crearUnElemento("div", {
-        className: "col s12 m6",
+        className: "col s12 m9",
         innerText: "",
         src: ""
     })
@@ -77,7 +70,7 @@ var renderTarjeta = function (item) {
     })
     var especificaciones = crearUnElemento("p", {
         className: "",
-        innerText: "Densidad:" + item.pl_dens +" Telescopio:"+ item.pl_telescope,
+        innerText: "Densidad:" + item.pl_dens +"   Telescopio:"+ item.pl_telescope,
         src: ""
     })
     
@@ -91,13 +84,13 @@ var renderTarjeta = function (item) {
     cardContent.appendChild(img)
     cardContent.appendChild(titulo)
     cardContent.appendChild(especificaciones)
-    
-    
-    
-    
+  
 }
 
-
+/*
+ * Funcion que crea un elemento y hace un perqueño objeto con las propiedadess
+ *
+ */
 var crearUnElemento = function (elementoACrear, propiedades) {
     var elemento = document.createElement(elementoACrear);
     elemento.className = propiedades.className;
