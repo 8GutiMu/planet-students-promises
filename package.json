@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/8GutiMu/planet-students-promises#readme",
   "dependencies": {
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "materialize-css": "^0.99.0"
   },
   "devDependencies": {}
 }
